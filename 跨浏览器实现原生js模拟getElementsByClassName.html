@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    window.onload=function(){
+        //跨浏览器的getElementsByClassName方法
+        function getElementsByClassName(node,classname){
+            if(node.getElementsByClassName){
+                return node.getElementsByClassName(classname);
+            }else{
+                var results=new Array();
+                var reg=new RegExp(' '+classname+' ');
+                var elems=node.getElementsByTagName('*');
+//                for(var i=0;i<elems.length;i++){
+//                    if(reg.test(' '+elems[i]+' ')){
+//                        results.push(elems[i]);
+//                    }
+//                }
+                for(var i=0;i<elems.length;i++){
+                    if(elems[i].className.indexOf(classname)){
+                        results[results.length]=elems[i];
+                    }
+                }
+                return results;
+            }
+        }
+    }
+</script>
+</body>
+</html>
