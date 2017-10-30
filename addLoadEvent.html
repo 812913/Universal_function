@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    在代码变得越来越复杂的情况下，无论打算在页面加载完毕时执行多少个函数，只要多写一条语句就ok了
+    function addLoadEvent(func){
+        var oldonload=window.onload;
+        if(typeof window.onload!=='function'){
+            window.onload=func;
+        }else{
+            window.onload=function(){
+                oldonload();
+                func();
+            }
+        }
+    }
+    addLoadEvent(firstFunction);
+    addLoadEvent(secondFunction);
+</script>
+</body>
+</html>
